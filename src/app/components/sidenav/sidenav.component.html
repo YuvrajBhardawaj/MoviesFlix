@@ -1,0 +1,31 @@
+<div class="example-container" [class.example-is-mobile]="isMobile()">
+  <mat-toolbar class="example-toolbar">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1 class="example-app-name">MoviesFlix</h1>
+  </mat-toolbar>
+
+  <mat-sidenav-container
+    class="example-sidenav-container"
+    [style.marginTop.px]="isMobile() ? 56 : 0"
+  >
+    <mat-sidenav
+      #snav
+      [mode]="isMobile() ? 'over' : 'side'"
+      [fixedInViewport]="isMobile()"
+      fixedTopGap="56"
+    >
+      <mat-nav-list>
+        <a mat-list-item>Trending Movies</a>
+        <a mat-list-item>Trending Shows</a>
+      </mat-nav-list>
+    </mat-sidenav>
+
+    <mat-sidenav-content>
+      <main class="m-6 min-h-full">
+        <router-outlet/>
+      </main>
+    </mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
