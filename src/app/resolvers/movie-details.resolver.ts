@@ -6,13 +6,10 @@ import { MovieServiceService } from '../services/movie-service.service';
 @Injectable({
   providedIn: 'root'
 })
-export class HomeResolver implements Resolve<any> {
+export class movieDetailsResolver implements Resolve<any> {
   constructor(private movieService: MovieServiceService) {}
-
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    return forkJoin({
-      trendingMovies: this.movieService.getTrendingMovies(),
-      trendingShows: this.movieService.getTrendingShows()
-    });
+      const movieId = route.paramMap.get('id');
+      return this.movieService.getMovieById(movieId || '');
   }
 }

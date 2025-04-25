@@ -1,10 +1,11 @@
 import { Component, Input, input } from '@angular/core';
-import { MaterialModule } from '../../../material/material.module';
-import { TrendingMovies, TrendingShows } from '../../../models/trending';
+import { MaterialModule } from '../../material/material.module';
+import { TrendingMovies, TrendingShows } from '../../models/trending';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cards',
-  imports: [MaterialModule],
+  imports: [MaterialModule, RouterLink],
   templateUrl: './cards.component.html',
   styleUrl: './cards.component.css'
 })

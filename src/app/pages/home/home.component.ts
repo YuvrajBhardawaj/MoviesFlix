@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { TrendingMovies, TrendingShows } from '../../models/trending';
-import { CardsComponent } from '../../components/cards/cards/cards.component';
+import { CardsComponent } from '../../components/cards/cards.component';
 
 @Component({
   selector: 'app-home',
