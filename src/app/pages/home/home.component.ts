@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { TrendingMovies } from '../../models/trending';
+import { TrendingMovies, TrendingShows } from '../../models/trending';
 import { CardsComponent } from '../../components/cards/cards/cards.component';
 
 @Component({
@@ -13,7 +13,7 @@ import { CardsComponent } from '../../components/cards/cards/cards.component';
 export class HomeComponent implements OnInit {
   constructor(private route: ActivatedRoute) {}
   trendingMovies: TrendingMovies[] = [];
-  trendingShows: any[] = [];
+  trendingShows: TrendingShows[] = [];
   ngOnInit(): void {
     const resolvedData = this.route.snapshot.data['trending'];
     this.trendingMovies = resolvedData.trendingMovies.results;

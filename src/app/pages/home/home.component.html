@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-4">
   <div class="flex justify-between items-center gap-2">
     @for (movie of trendingMovies.slice(0,5); track movie.id) {
-    <app-cards [data]="movie"/>
+    <app-cards [data]="movie" [title]="movie.title"/>
     } view all
   </div>
   <div class="flex justify-between items-center gap-2">
     @for (show of trendingShows.slice(0,5); track show.id) {
-    <app-cards [data]="show"/>
+    <app-cards [data]="show" [title]="show.original_name"/>
     } view all
   </div>
 </div>
