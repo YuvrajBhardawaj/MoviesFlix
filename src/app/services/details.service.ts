@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
-import { MovieDetails } from '../models/details';
+import { CreditsResponse, MovieDetails } from '../models/details';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +16,13 @@ export class DetailsService {
     return this.http.get<MovieDetails>(`https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}`)
       .pipe(
         tap((res:MovieDetails)=>this.DetailsSubject.next(res))
-      )
+      );
   }
+  getMovieCredits(id: string) {
+    return this.http.get<CreditsResponse>(`https://api.themoviedb.org/3/movie/${id}/credits?api_key=${this.apiKey}`)
+      .pipe(
+        tap((res: CreditsResponse)=>console.log(res))
+      );
+  }
+  
 }

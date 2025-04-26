@@ -2,10 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetails } from '../../models/details';
 import { DetailsService } from '../../services/details.service';
+import { DatePipe } from '@angular/common';
+import { MaterialModule } from '../../material/material.module';
 
 @Component({
   selector: 'app-movie-details',
-  imports: [],
+  imports: [DatePipe, MaterialModule],
   templateUrl: './movie-details.component.html',
   styleUrl: './movie-details.component.css'
 })

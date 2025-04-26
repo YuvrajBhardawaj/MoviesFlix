@@ -6,7 +6,7 @@ import { movieDetailsResolver } from './resolvers/movie-details.resolver';
 
 export const routes: Routes = [
   {
-    path: ':id',
+    path: 'movie/:id',
     component: MovieDetailsComponent, 
     resolve: {
       details: movieDetailsResolver

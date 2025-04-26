@@ -1,4 +1,4 @@
-<a [routerLink]="[`/${data.id}`]">
+<a [routerLink]="[`movie/${data.id}`]">
   <mat-card class="example-card w-50 h-[360px]" appearance="outlined">
     <img
       mat-card-image
@@ -13,7 +13,6 @@
       <div class="flex items-center gap-2">
         <p>{{ Math.round(data.vote_average) }}/10</p>
         <mat-progress-spinner diameter="30" [value]="data.vote_average*10"></mat-progress-spinner>
-  
       </div>
     </mat-card-content>
   </mat-card>  
