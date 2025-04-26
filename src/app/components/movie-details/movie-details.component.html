@@ -1,1 +1,11 @@
-<p>movie-details works!</p>
+@if (details) {
+    <div class="w-full relative">
+      <div 
+        class="w-full h-[30rem] bg-cover bg-center border opacity-100"
+        [style.background-image]="'url(https://image.tmdb.org/t/p/w500' + details.backdrop_path + ')'">
+      </div>
+  
+     
+    </div>
+  }
+  

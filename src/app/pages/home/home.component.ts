@@ -1,24 +1,26 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
-import { TrendingMovies, TrendingShows } from '../../models/trending';
+import { TrendingMovies, TrendingMoviesPageination, TrendingShows, TrendingShowsPagination } from '../../models/trending';
 import { CardsComponent } from '../../components/cards/cards.component';
+import { MaterialModule } from '../../material/material.module';
+import { TrendingService } from '../../services/trending.service';
 
 @Component({
   selector: 'app-home',
-  imports: [CardsComponent],
+  imports: [CardsComponent, MaterialModule],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
 
 export class HomeComponent implements OnInit {
-  constructor(private route: ActivatedRoute) {}
+  constructor(private movieService: TrendingService) {}
   trendingMovies: TrendingMovies[] = [];
   trendingShows: TrendingShows[] = [];
   ngOnInit(): void {
-    const resolvedData = this.route.snapshot.data['trending'];
-    this.trendingMovies = resolvedData.trendingMovies.results;
-    this.trendingShows = resolvedData.trendingShows.results;
-    console.log(this.trendingMovies);
-    console.log(this.trendingShows);
+    this.movieService.trendingMovies$.subscribe({
+      next:(data: TrendingMoviesPageination)=>this.trendingMovies = data.results
+    })
+    this.movieService.trendingShows$.subscribe({
+      next:(data: TrendingShowsPagination)=>this.trendingShows = data.results
+    })
   }
 }
