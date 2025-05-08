@@ -12,5 +12,6 @@ import { RouterLink } from '@angular/router';
 export class CardsComponent {
   @Input() data!: TrendingMovies|TrendingShows;
   @Input() title!: string;
+  @Input() type!: string;
   Math = Math; // 👈 Expose Math to the template
 }

@@ -1,0 +1,38 @@
+@if (details) {
+    <div class="w-full h-[30rem] relative bg-cover bg-center"
+         [style.background-image]="'url(https://image.tmdb.org/t/p/w500' + details.backdrop_path + ')'">
+      
+      <div class="absolute inset-0 bg-black opacity-70"></div>
+  
+      <div class="relative z-10 flex justify-between items-center h-full text-white px-16 py-10 gap-10">
+        <img [src]="'https://image.tmdb.org/t/p/w500' + details.poster_path" class="w-56" [alt]="details.name" />
+        
+        <div class="flex-1 flex flex-col gap-4">
+          <h1 class="text-4xl font-semibold">
+            {{ details.name }}
+          </h1>
+          <h4 class="text-xl font-semibold">({{ details.first_air_date| date }}-{{details.last_air_date | date}})</h4>
+          <div class="flex gap-2 items-center">
+            <mat-progress-spinner
+              mode="determinate"
+              strokeWidth="5"
+              diameter="40"
+              [value]="details.vote_average * 10"
+            ></mat-progress-spinner>
+            <h4 class="text-lg font-semibold">{{ Math.round(details.vote_average * 10) }}% Audience Score</h4>
+          </div>
+  
+          <h3 class="text-2xl font-semibold">Overview</h3>
+          <p>{{ details.overview }}</p>
+  
+          <div class="flex flex-wrap gap-2">
+            @for (genre of details.genres; track $index) {
+              <p class="bg-gray-700 px-2 py-1 rounded">{{ genre.name }}</p>
+            }
+          </div>
+  
+        </div>
+      </div>
+    </div>
+  }
+  

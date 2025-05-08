@@ -10,13 +10,13 @@ import { forkJoin } from 'rxjs';
 @Injectable({
   providedIn: 'root',
 })
-export class movieDetailsResolver implements Resolve<any> {
+export class showDetailsResolver implements Resolve<any> {
   constructor(private detailsService: DetailsService) {}
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
-    const movieId = route.paramMap.get('id');
+    const showId = route.paramMap.get('id');
     return forkJoin({
-      movieDetails: this.detailsService.getMovieById(movieId || ''),
-      movieCastDetials: this.detailsService.getMovieCredits(movieId || '')
+      showDetails: this.detailsService.getShowById(showId || ''),
+      // showCastDetials: this.detailsService.getshowCredits(showId || '')
     });
   }
 }

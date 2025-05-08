@@ -14,8 +14,9 @@ import { MaterialModule } from '../../material/material.module';
 export class MovieDetailsComponent implements OnInit {
   constructor(private detailsService : DetailsService){}
   details: MovieDetails|null = null;
+  Math = Math;
   ngOnInit(): void {
-      this.detailsService.Details$.subscribe({
+      this.detailsService.movieDetails$.subscribe({
         next:(res: MovieDetails|null)=>this.details = res
       })
   }
