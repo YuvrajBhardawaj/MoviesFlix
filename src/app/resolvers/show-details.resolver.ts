@@ -16,7 +16,7 @@ export class showDetailsResolver implements Resolve<any> {
     const showId = route.paramMap.get('id');
     return forkJoin({
       showDetails: this.detailsService.getShowById(showId || ''),
-      // showCastDetials: this.detailsService.getshowCredits(showId || '')
+      showCastDetials: this.detailsService.getShowCredits(showId || '')
     });
   }
 }

@@ -1,0 +1,40 @@
+<div class="flex flex-col gap-6">
+  <!-- Cast Section -->
+  <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
+    <h3 class="text-2xl font-semibold mb-4">Cast</h3>
+    <div
+      class="grid grid-cols-4 md:grid-cols-7 gap-4 justify-between items-center"
+    >
+      @for (cast of credits.cast.slice(0, 14); track $index) {
+      <div class="flex flex-col items-center w-auto">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
+          alt="{{ cast.name }}"
+          class="w-40 h-40 object-cover rounded-full border border-gray-300 shadow"
+        />
+        <p class="text-sm text-center mt-2 font-medium">{{ cast.name }}</p>
+        <p class="text-xs text-center text-gray-400">{{ cast.character }}</p>
+      </div>
+      }
+    </div>
+  </div>
+
+  <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
+    <h3 class="text-2xl font-semibold mb-4">Crew</h3>
+    <div
+      class="grid grid-cols-4 md:grid-cols-7 gap-4 justify-between items-center"
+    >
+      @for (crew of credits.crew.slice(0, 14); track $index) {
+      <div class="flex flex-col items-center w-auto">
+        <img
+          [src]="'https://image.tmdb.org/t/p/w185' + crew.profile_path"
+          alt="{{ crew.name }}"
+          class="w-40 h-40 object-cover rounded-full border border-gray-300 shadow"
+        />
+        <p class="text-sm text-center mt-2 font-medium">{{ crew.name }}</p>
+        <p class="text-xs text-center text-gray-400">{{ crew.job }}</p>
+      </div>
+      }
+    </div>
+  </div>
+</div>
