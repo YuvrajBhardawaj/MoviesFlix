@@ -17,7 +17,7 @@ export class ShowDetailsComponent implements OnInit{
   Math = Math;
   ngOnInit(): void {
     this.detailsService.showDetails$.subscribe({
-      next: (res: ShowDetails | null) => (this.details = res),
+      next: (res: ShowDetails | null) => {this.details = res; console.log(res)},
     });
     this.detailsService.Credits$.subscribe({
       next:(res: CreditsResponse|null) => this.showCredits=res
