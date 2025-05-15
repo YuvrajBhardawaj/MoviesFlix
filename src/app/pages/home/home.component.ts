@@ -12,14 +12,16 @@ import { TrendingService } from '../../services/trending.service';
 })
 
 export class HomeComponent implements OnInit {
-  constructor(private movieService: TrendingService) {}
+  constructor(private trendingService: TrendingService) {}
   trendingMovies: TrendingMovies[] = [];
   trendingShows: TrendingShows[] = [];
+  activeTab="day"
+
   ngOnInit(): void {
-    this.movieService.trendingMovies$.subscribe({
+    this.trendingService.trendingMovies$.subscribe({
       next:(data: TrendingMoviesPageination)=>this.trendingMovies = data.results
     })
-    this.movieService.trendingShows$.subscribe({
+    this.trendingService.trendingShows$.subscribe({
       next:(data: TrendingShowsPagination)=>this.trendingShows = data.results
     })
   }

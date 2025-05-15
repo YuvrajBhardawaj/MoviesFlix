@@ -2,8 +2,9 @@
   <!-- Cast Section -->
   <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
     <h3 class="text-2xl font-semibold mb-4">Cast</h3>
-    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 justify-between items-center">
-      @for (cast of credits.cast.slice(0, 14); track $index) {
+    @if (credits.cast.length>0) {
+      <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-between items-center">
+      @for (cast of credits.cast.slice(0, 12); track $index) {
         <div class="flex flex-col items-center w-auto">
           @if (cast.profile_path) {
             <img
@@ -24,13 +25,18 @@
         </div>
       }
     </div>
+    }
+    @else {
+      <div class="text-center text-xl">😶‍🌫️Unable To Fetch Cast Details</div>
+    }
+    
   </div>
 
   <!-- Crew Section -->
   <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
     <h3 class="text-2xl font-semibold mb-4">Crew</h3>
-    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-7 gap-4 justify-between items-center">
-      @for (crew of credits.crew.slice(0, 14); track $index) {
+    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-between items-center">
+      @for (crew of credits.crew.slice(0, 12); track $index) {
         <div class="flex flex-col items-center w-auto">
           @if (crew.profile_path) {
             <img

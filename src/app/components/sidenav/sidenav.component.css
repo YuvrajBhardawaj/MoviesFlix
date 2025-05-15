@@ -29,3 +29,25 @@ h1.example-app-name {
        `<body>` to be our scrolling element for mobile layouts. */
   flex: 1 0 auto;
 }
+
+.mat-drawer {
+  width: 18rem !important;
+  min-width: 12rem !important;
+}
+
+.example-toolbar {
+  background-color: #5e0150;
+  color: whitesmoke;
+}
+
+.custom-sidenav {
+  box-shadow: 0 0 2px 0 #d302b4; /* Purple glow */
+}
+
+mat-icon {
+  color: whitesmoke;
+}
+
+.list-items:hover {
+  background-color: #f8a6f5;
+}
