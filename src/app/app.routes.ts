@@ -7,6 +7,7 @@ import { showDetailsResolver } from './resolvers/show-details.resolver';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { searchResolver } from './resolvers/search.resolver';
+import { TrendingComponent } from './pages/trending/trending.component';
 
 export const routes: Routes = [
   {
@@ -29,6 +30,13 @@ export const routes: Routes = [
     component: ShowDetailsComponent, 
     resolve: {
       details: showDetailsResolver
+    }
+  },
+  {
+    path: 'trending/:type',
+    component: TrendingComponent,
+    resolve: {
+      trending: HomeResolver,
     }
   },
   {

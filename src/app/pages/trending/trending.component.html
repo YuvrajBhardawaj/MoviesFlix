@@ -1,0 +1,14 @@
+<div class="flex flex-wrap justify-evenly items-center gap-4">
+  @for (movie of trendingMovies; track movie.id) {
+  <app-cards
+    [data]="movie"
+    [type]="'movie'"
+    [title]="movie.title"
+    class="hover:transition-all duration-200 hover:scale-105 hover:shadow-lg rounded-xl"
+  />
+  }
+</div>
+<div class="flex justify-end gap-4">
+    <button mat-button>Prev</button>
+  <button mat-flat-button>Next</button>
+</div>

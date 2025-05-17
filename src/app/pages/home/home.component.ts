@@ -3,10 +3,11 @@ import { TrendingMovies, TrendingMoviesPageination, TrendingShows, TrendingShows
 import { CardsComponent } from '../../components/cards/cards.component';
 import { MaterialModule } from '../../material/material.module';
 import { TrendingService } from '../../services/trending.service';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-home',
-  imports: [CardsComponent, MaterialModule],
+  imports: [CardsComponent, MaterialModule, RouterLink],
   templateUrl: './home.component.html',
   styleUrl: './home.component.css',
 })
@@ -15,7 +16,6 @@ export class HomeComponent implements OnInit {
   constructor(private trendingService: TrendingService) {}
   trendingMovies: TrendingMovies[] = [];
   trendingShows: TrendingShows[] = [];
-  activeTab="day"
 
   ngOnInit(): void {
     this.trendingService.trendingMovies$.subscribe({
