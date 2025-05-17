@@ -11,15 +11,32 @@ import { TrendingComponent } from './pages/trending/trending.component';
 import { TrendingResolver } from './resolvers/trending.resolver';
 import { TrendingMoviesComponent } from './pages/trending/trending-movies/trending-movies.component';
 import { TrendingShowsComponent } from './pages/trending/trending-shows/trending-shows.component';
+import { SearchMoviesComponent } from './pages/search-results/search-movies/search-movies.component';
+import { SearchShowsComponent } from './pages/search-results/search-shows/search-shows.component';
+import { SearchActorsComponent } from './pages/search-results/search-actors/search-actors.component';
 
 export const routes: Routes = [
   {
     path: 'search',
-    component: SearchResultsComponent,
-    resolve: {
-      details: searchResolver,
-    },
-    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+    children: [
+      {
+        path: 'movies',
+        component: SearchMoviesComponent,
+        resolve: {
+          details: searchResolver,
+        },
+        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
+      },
+      {
+        path: 'shows',
+        component: SearchShowsComponent
+      },
+      {
+        path: 'actors',
+        component: SearchActorsComponent
+      }
+    ],
+    component: SearchResultsComponent
   },
   {
     path: 'movie/:id',
@@ -49,9 +66,9 @@ export const routes: Routes = [
         path: 'shows',
         component: TrendingShowsComponent,
         resolve: {
-          trending: TrendingResolver
-        }
-      }
+          trending: TrendingResolver,
+        },
+      },
     ],
   },
   {

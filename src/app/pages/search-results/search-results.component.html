@@ -1,5 +1,7 @@
-@for (result of searchResults?.results; track $index) {
-  @if (result.media_type === 'person') {
-    <img [src]="'https://image.tmdb.org/t/p/w500/' + result.profile_path" alt="{{ result.name }}">
-  }
-}
+<mat-chip-listbox>
+  <mat-chip-option [selected]="curr === 'movies'" (click)="onCategoryChange('movies')">Movies</mat-chip-option>
+  <mat-chip-option [selected]="curr === 'shows'" (click)="onCategoryChange('shows')">Shows</mat-chip-option>
+  <mat-chip-option [selected]="curr === 'actors'" (click)="onCategoryChange('actors')">Actors</mat-chip-option>
+</mat-chip-listbox>
+
+<router-outlet></router-outlet>

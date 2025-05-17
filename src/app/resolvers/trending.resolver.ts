@@ -12,7 +12,6 @@ export class TrendingResolver implements Resolve<TrendingMoviesPageination | Tre
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TrendingMoviesPageination | TrendingShowsPagination> {
     const type = route.paramMap.get('type');
-    console.log(type)
     if (type === 'movies') {
       return this.trendingService.getTrendingMovies();
     } else {

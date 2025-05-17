@@ -1,6 +1,6 @@
 export interface SearchResponse {
   page: number;
-  results: (MovieResult | TVResult | PersonResult)[];
+  results: any[];
   total_pages: number;
   total_results: number;
 }

@@ -5,7 +5,12 @@
     </button>
     <a [routerLink]="['/']" class="example-app-name flex-1">MoviesFlix</a>
     <form [formGroup]="searchField" (ngSubmit)="submit()">
-      <input formControlName="name" type="text" class="w-60 px-2 py-1 outline-none bg-purple-100 rounded-md text-pink-800">
+      <input
+        formControlName="name"
+        type="text"
+        placeholder="Enter movie, show or cast"
+        class="w-75 text-sm px-2 py-2 outline-none bg-purple-100 rounded-md text-pink-800"
+      />
     </form>
   </mat-toolbar>
 
@@ -15,20 +20,30 @@
   >
     <mat-sidenav
       #snav
-      class="custom-sidenav"
+      class="custom-sidenav p-6"
       [mode]="isMobile() ? 'over' : 'side'"
       [fixedInViewport]="isMobile()"
       fixedTopGap="56"
     >
-      <mat-nav-list>
-        <a mat-list-item class="list-items" [routerLink]="['/trending/movies']">Trending Movies</a>
-        <a mat-list-item class="list-items" [routerLink]="['/trending/shows']">Trending Shows</a>
-      </mat-nav-list>
+      <div>
+        <a [routerLink]="['/']" class="text-xl font-semibold">Trending🔥</a>
+        <mat-nav-list>
+          <a
+            mat-list-item
+            class="list-items"
+            [routerLink]="['/trending/movies']"
+            >🎞️Trending Movies</a
+          >
+          <a mat-list-item class="list-items" [routerLink]="['/trending/shows']"
+            >📺Trending Shows</a
+          >
+        </mat-nav-list>
+      </div>
     </mat-sidenav>
 
     <mat-sidenav-content>
       <main class="m-6 min-h-full">
-        <router-outlet/>
+        <router-outlet />
       </main>
     </mat-sidenav-content>
   </mat-sidenav-container>

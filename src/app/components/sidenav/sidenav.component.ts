@@ -38,7 +38,7 @@ export class SidenavComponent implements OnDestroy {
     const query = this.searchField.getRawValue().name.trim();
     if (!query) return;
     this.searchField.reset();
-    this.router.navigate(['/search'], { queryParams: { query } });
+    this.router.navigate(['/search/movies'], { queryParams: { query } });
   }
 
   ngOnDestroy(): void {

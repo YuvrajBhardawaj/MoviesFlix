@@ -16,7 +16,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
 import { MatToolbarModule } from '@angular/material/toolbar';
-
+import {MatTreeModule} from '@angular/material/tree';
 const MaterialComponents = [
   CommonModule,
   MatProgressSpinnerModule,
@@ -33,6 +33,7 @@ const MaterialComponents = [
   MatSelectModule,
   MatListModule,
   MatToolbarModule,
+  MatTreeModule
 ];
 
 @NgModule({
