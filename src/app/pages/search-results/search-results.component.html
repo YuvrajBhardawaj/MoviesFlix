@@ -1,0 +1,5 @@
+@for (result of searchResults?.results; track $index) {
+  @if (result.media_type === 'person') {
+    <img [src]="'https://image.tmdb.org/t/p/w500/' + result.profile_path" alt="{{ result.name }}">
+  }
+}
