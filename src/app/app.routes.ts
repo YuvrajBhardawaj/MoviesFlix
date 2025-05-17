@@ -8,36 +8,51 @@ import { ShowDetailsComponent } from './components/show-details/show-details.com
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { searchResolver } from './resolvers/search.resolver';
 import { TrendingComponent } from './pages/trending/trending.component';
+import { TrendingResolver } from './resolvers/trending.resolver';
+import { TrendingMoviesComponent } from './pages/trending/trending-movies/trending-movies.component';
+import { TrendingShowsComponent } from './pages/trending/trending-shows/trending-shows.component';
 
 export const routes: Routes = [
   {
     path: 'search',
     component: SearchResultsComponent,
     resolve: {
-      details: searchResolver
+      details: searchResolver,
     },
-    runGuardsAndResolvers: 'paramsOrQueryParamsChange'
+    runGuardsAndResolvers: 'paramsOrQueryParamsChange',
   },
   {
     path: 'movie/:id',
-    component: MovieDetailsComponent, 
+    component: MovieDetailsComponent,
     resolve: {
-      details: movieDetailsResolver
-    }
+      details: movieDetailsResolver,
+    },
   },
   {
     path: 'show/:id',
-    component: ShowDetailsComponent, 
+    component: ShowDetailsComponent,
     resolve: {
-      details: showDetailsResolver
-    }
+      details: showDetailsResolver,
+    },
   },
   {
-    path: 'trending/:type',
-    component: TrendingComponent,
-    resolve: {
-      trending: HomeResolver,
-    }
+    path: 'trending',
+    children: [
+      {
+        path: 'movies',
+        component: TrendingMoviesComponent,
+        resolve: {
+          trending: TrendingResolver,
+        },
+      },
+      {
+        path: 'shows',
+        component: TrendingShowsComponent,
+        resolve: {
+          trending: TrendingResolver
+        }
+      }
+    ],
   },
   {
     path: '',

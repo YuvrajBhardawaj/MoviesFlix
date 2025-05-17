@@ -27,13 +27,12 @@ export class TrendingService {
   trendingShows$ = this.trendingShowsSubject.asObservable();
 
   getTrendingMovies(page: number=1): Observable<TrendingMoviesPageination> {
-    return this.http.get<TrendingMoviesPageination>(`https://api.themoviedb.org/3/trending/movie/week?api_key=${this.apiKey}`)
+    return this.http.get<TrendingMoviesPageination>(`https://api.themoviedb.org/3/trending/movie/week?api_key=${this.apiKey}&page=${page}`)
     .pipe(
       tap((res: TrendingMoviesPageination) => {
         this.trendingMoviesSubject.next(res); // Update the BehaviorSubject with the new data
       })
     );
-
   }
   
   getTrendingShows(page: number=1): Observable<TrendingShowsPagination> {

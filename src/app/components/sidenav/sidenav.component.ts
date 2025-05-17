@@ -1,13 +1,13 @@
 import { Component, inject, OnDestroy, signal } from '@angular/core';
 import { MaterialModule } from '../../material/material.module';
 import { MediaMatcher } from '@angular/cdk/layout';
-import { ActivatedRoute, Router, RouterOutlet } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink, RouterOutlet } from '@angular/router';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { SearchService } from '../../services/search.service';
 
 @Component({
   selector: 'app-sidenav',
-  imports: [MaterialModule, RouterOutlet, ReactiveFormsModule],
+  imports: [MaterialModule, RouterOutlet, ReactiveFormsModule, RouterLink],
   templateUrl: './sidenav.component.html',
   styleUrl: './sidenav.component.css',
 })

@@ -1,0 +1,24 @@
+<div class="flex flex-col gap-4">
+  <div class="flex flex-wrap justify-evenly items-center gap-4">
+    @for (show of trendingShows.results; track show.id) {
+    <app-cards
+      [data]="show"
+      [type]="'show'"
+      [title]="show.original_name"
+      class="hover:transition-all duration-200 hover:scale-105 rounded-xl"
+    />
+    }
+  </div>
+  <div class="flex justify-end gap-4">
+    <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">
+      Prev
+    </button>
+    <button
+      mat-flat-button
+      (click)="nextPage()"
+      [disabled]="currentPage === trendingShows.total_pages"
+    >
+      Next
+    </button>
+  </div>
+</div>
