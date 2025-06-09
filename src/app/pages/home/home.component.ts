@@ -17,12 +17,13 @@ export class HomeComponent implements OnInit {
   trendingMovies: TrendingMovies[] = [];
   trendingShows: TrendingShows[] = [];
 
-  ngOnInit(): void {
+  ngOnInit(): void { //effect 
     this.trendingService.trendingMovies$.subscribe({
       next:(data: TrendingMoviesPageination)=>this.trendingMovies = data.results
     })
     this.trendingService.trendingShows$.subscribe({
       next:(data: TrendingShowsPagination)=>this.trendingShows = data.results
     })
+    
   }
 }

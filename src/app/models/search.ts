@@ -1,6 +1,6 @@
 export interface SearchResponse {
   page: number;
-  results: any[];
+  results: {title?:string; name?:string; poster_path: string; popularity: number; media_type: string;}[];
   total_pages: number;
   total_results: number;
 }

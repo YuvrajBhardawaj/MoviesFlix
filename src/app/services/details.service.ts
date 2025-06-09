@@ -2,13 +2,12 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable, tap } from 'rxjs';
 import { CreditsResponse, MovieDetails, ShowDetails } from '../models/details';
-
+import { environment } from '../../environments/environment.development';
 @Injectable({
   providedIn: 'root',
 })
 export class DetailsService {
   constructor(private http: HttpClient) {}
-  private apiKey = '2f38bf0380418876c7d496e410ddf0a7';
 
   private movieDetailsSubject = new BehaviorSubject<MovieDetails | null>(null);
   movieDetails$ = this.movieDetailsSubject.asObservable();
@@ -22,7 +21,7 @@ export class DetailsService {
   getMovieById(id: string): Observable<MovieDetails> {
     return this.http
       .get<MovieDetails>(
-        `https://api.themoviedb.org/3/movie/${id}?api_key=${this.apiKey}`
+        `https://api.themoviedb.org/3/movie/${id}?api_key=${environment.apiKey}`
       )
       .pipe(tap((res: MovieDetails) => this.movieDetailsSubject.next(res)));
   }
@@ -30,7 +29,7 @@ export class DetailsService {
   getMovieCredits(id: string): Observable<CreditsResponse> {
     return this.http
       .get<CreditsResponse>(
-        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${this.apiKey}`
+        `https://api.themoviedb.org/3/movie/${id}/credits?api_key=${environment.apiKey}`
       )
       .pipe(tap((res: CreditsResponse) => this.CreditSubject.next(res)));
   }
@@ -38,7 +37,7 @@ export class DetailsService {
   getShowById(id: string): Observable<ShowDetails> {
     return this.http
       .get<ShowDetails>(
-        `https://api.themoviedb.org/3/tv/${id}?api_key=${this.apiKey}`
+        `https://api.themoviedb.org/3/tv/${id}?api_key=${environment.apiKey}`
       )
       .pipe(tap((res: ShowDetails) => this.showmovieDetailsSubject.next(res)));
   }
@@ -46,7 +45,7 @@ export class DetailsService {
   getShowCredits(id: string): Observable<CreditsResponse> {
     return this.http
       .get<CreditsResponse>(
-        `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${this.apiKey}`
+        `https://api.themoviedb.org/3/tv/${id}/credits?api_key=${environment.apiKey}`
       )
       .pipe(tap((res: CreditsResponse) => this.CreditSubject.next(res)));
   }

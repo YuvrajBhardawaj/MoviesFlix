@@ -3,15 +3,59 @@
     <button mat-icon-button (click)="snav.toggle()">
       <mat-icon>menu</mat-icon>
     </button>
-    <a [routerLink]="['/']" class="example-app-name flex-1">MoviesFlix</a>
-    <form [formGroup]="searchField" (ngSubmit)="submit()">
+    <a
+      [routerLink]="['/']"
+      class="example-app-name flex-1 flex items-center gap-2"
+      >MoviesFlix <mat-icon>movie</mat-icon></a
+    >
+    <div class="relative w-full max-w-md" #searchContainer>
+      <!-- Search Input -->
       <input
-        formControlName="name"
+        [formControl]="searchField"
         type="text"
-        placeholder="Enter movie, show or cast"
-        class="w-75 text-sm px-2 py-2 outline-none bg-purple-100 rounded-md text-pink-800"
+        placeholder="Enter your favorite movie or show"
+        class="w-full text-sm px-4 py-2 outline-none bg-purple-100 rounded-md text-pink-800"
+        (focus)="dropDown = true"
+        #searchInput
       />
-    </form>
+
+      <!-- Search Results Dropdown -->
+      <div
+        *ngIf="searchResults.length > 0 && dropDown"
+        class="absolute top-full left-0 mt-1 w-full max-h-80 overflow-y-auto bg-white border border-purple-300 shadow-lg rounded-md z-50 text-black"
+      >
+        @for (item of searchResults; track $index) {
+        <a
+          [routerLink]="['/search']"
+          class="flex items-center gap-4 p-3 hover:bg-purple-100 cursor-pointer transition-all duration-150"
+          (click)="dropDown = false"
+        >
+          @if (item.poster_path) {
+          <img
+            [src]="'https://image.tmdb.org/t/p/w200/' + item.poster_path"
+            alt="Poster"
+            class="w-16 h-20 object-cover rounded"
+          />
+          } @else {
+          <div
+            class="w-16 h-20 flex justify-center items-center rounded bg-purple-50 text-purple-600"
+          >
+            <mat-icon *ngIf="item.media_type === 'tv'" color="primary"
+              >tv</mat-icon
+            >
+            <mat-icon *ngIf="item.media_type === 'movie'" color="primary"
+              >videocam</mat-icon
+            >
+          </div>
+          }
+
+          <div class="text-sm font-medium truncate max-w-[75%]">
+            {{ item.name || item.title }}
+          </div>
+        </a>
+        }
+      </div>
+    </div>
   </mat-toolbar>
 
   <mat-sidenav-container
@@ -20,23 +64,75 @@
   >
     <mat-sidenav
       #snav
-      class="custom-sidenav p-6"
+      class="custom-sidenav p-6 bg-white shadow-md border-r border-purple-200"
       [mode]="isMobile() ? 'over' : 'side'"
       [fixedInViewport]="isMobile()"
       fixedTopGap="56"
     >
-      <div>
-        <a [routerLink]="['/']" class="text-xl font-semibold">Trending🔥</a>
-        <mat-nav-list>
+      <!-- Trending Section -->
+      <div class="mb-6">
+        <p class="text-lg font-bold text-purple-700 mb-2">🔥 Trending</p>
+        <mat-nav-list class="space-y-1">
           <a
             mat-list-item
             class="list-items"
             [routerLink]="['/trending/movies']"
-            >🎞️Trending Movies</a
           >
-          <a mat-list-item class="list-items" [routerLink]="['/trending/shows']"
-            >📺Trending Shows</a
+            🎞️ Trending Movies
+          </a>
+          <a
+            mat-list-item
+            class="list-items"
+            [routerLink]="['/trending/shows']"
           >
+            📺 Trending Shows
+          </a>
+        </mat-nav-list>
+      </div>
+
+      <!-- Celebs Section -->
+      <div class="mb-6">
+        <p class="text-lg font-bold text-purple-700 mb-2">🎭 Popular Celebs</p>
+        <mat-nav-list class="space-y-1">
+          <a
+            mat-list-item
+            class="list-items"
+            [routerLink]="['/trending/movies']"
+          >
+            <mat-label class="flex items-center gap-1"
+              ><mat-icon [ngStyle]="{ color: 'red' }">numbers</mat-icon> Explore
+              Celebs</mat-label
+            >
+          </a>
+        </mat-nav-list>
+      </div>
+
+      <!-- MoviesFlix Picks -->
+      <div class="mb-6">
+        <p class="text-lg font-bold text-purple-700 mb-2">
+          ⭐ MoviesFlix Picks
+        </p>
+        <mat-nav-list class="space-y-1">
+          <a
+            mat-list-item
+            class="list-items"
+            [routerLink]="['/must-watch/movies']"
+          >
+            <mat-label class="flex items-center gap-1"
+              ><mat-icon [ngStyle]="{ color: 'purple' }">videocam</mat-icon>Must
+              Watch Movies</mat-label
+            >
+          </a>
+          <a
+            mat-list-item
+            class="list-items"
+            [routerLink]="['/must-watch/shows']"
+          >
+            <mat-label class="flex items-center gap-1"
+              ><mat-icon [ngStyle]="{ color: 'purple' }">tv_gen</mat-icon>Must
+              Watch Shows</mat-label
+            >
+          </a>
         </mat-nav-list>
       </div>
     </mat-sidenav>

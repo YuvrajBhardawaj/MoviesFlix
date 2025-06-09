@@ -11,8 +11,8 @@ export class TrendingResolver implements Resolve<TrendingMoviesPageination | Tre
   constructor(private trendingService: TrendingService) {}
 
   resolve(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<TrendingMoviesPageination | TrendingShowsPagination> {
-    const type = route.paramMap.get('type');
-    if (type === 'movies') {
+    const path = route.routeConfig?.path;
+    if (path === 'movies') {
       return this.trendingService.getTrendingMovies();
     } else {
       return this.trendingService.getTrendingShows();

@@ -14,28 +14,12 @@ import { TrendingShowsComponent } from './pages/trending/trending-shows/trending
 import { SearchMoviesComponent } from './pages/search-results/search-movies/search-movies.component';
 import { SearchShowsComponent } from './pages/search-results/search-shows/search-shows.component';
 import { SearchActorsComponent } from './pages/search-results/search-actors/search-actors.component';
+import { CelebsComponent } from './pages/celebs/celebs.component';
+import { celebsResolver } from './resolvers/celebs.resolver';
 
 export const routes: Routes = [
   {
     path: 'search',
-    children: [
-      {
-        path: 'movies',
-        component: SearchMoviesComponent,
-        resolve: {
-          details: searchResolver,
-        },
-        runGuardsAndResolvers: 'paramsOrQueryParamsChange',
-      },
-      {
-        path: 'shows',
-        component: SearchShowsComponent
-      },
-      {
-        path: 'actors',
-        component: SearchActorsComponent
-      }
-    ],
     component: SearchResultsComponent
   },
   {
@@ -51,6 +35,13 @@ export const routes: Routes = [
     resolve: {
       details: showDetailsResolver,
     },
+  },
+  {
+    path: 'celebs',
+    component: CelebsComponent,
+    resolve: {
+      celebs: celebsResolver
+    }
   },
   {
     path: 'trending',
