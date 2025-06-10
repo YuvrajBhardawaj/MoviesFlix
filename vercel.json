@@ -1,0 +1,5 @@
+{
+  "outputDirectory": "dist/moviesflix",
+  "buildCommand": "npm run build",
+  "framework": "static"
+}
