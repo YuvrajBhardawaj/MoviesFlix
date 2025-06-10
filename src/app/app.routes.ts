@@ -6,14 +6,9 @@ import { movieDetailsResolver } from './resolvers/movie-details.resolver';
 import { showDetailsResolver } from './resolvers/show-details.resolver';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
 import { SearchResultsComponent } from './pages/search-results/search-results.component';
-import { searchResolver } from './resolvers/search.resolver';
-import { TrendingComponent } from './pages/trending/trending.component';
 import { TrendingResolver } from './resolvers/trending.resolver';
 import { TrendingMoviesComponent } from './pages/trending/trending-movies/trending-movies.component';
 import { TrendingShowsComponent } from './pages/trending/trending-shows/trending-shows.component';
-import { SearchMoviesComponent } from './pages/search-results/search-movies/search-movies.component';
-import { SearchShowsComponent } from './pages/search-results/search-shows/search-shows.component';
-import { SearchActorsComponent } from './pages/search-results/search-actors/search-actors.component';
 import { CelebsComponent } from './pages/celebs/celebs.component';
 import { celebsResolver } from './resolvers/celebs.resolver';
 
