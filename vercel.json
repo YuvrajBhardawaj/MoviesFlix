@@ -1,5 +1,20 @@
 {
-  "outputDirectory": "dist/moviesflix",
-  "buildCommand": "npm run build",
-  "framework": "static"
+  "builds": [
+    {
+      "src": "angular.json",
+      "use": "@vercel/static-build",
+      "config": {
+        "distDir": "dist/moviesflix"
+      }
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "/index.html"
+    }
+  ],
+  "scripts": {
+    "build": "ng build --configuration production"
+  }
 }
