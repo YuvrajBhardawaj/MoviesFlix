@@ -64,3 +64,8 @@ mat-icon {
   color: #1f2937; /* Tailwind's gray-800 */
   text-decoration: none;
 }
+@media (hover: none) {
+  .mat-sidenav a:hover {
+    background-color: transparent !important;
+  }
+}
