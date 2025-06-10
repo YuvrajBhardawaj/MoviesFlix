@@ -55,6 +55,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
   }
 
   searchResults: {
+    id: number;
     title?: string;
     name?: string;
     poster_path: string;
