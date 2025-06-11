@@ -26,7 +26,11 @@
       >
         @for (item of searchResults; track $index) {
         <a
-          [routerLink]="item.media_type === 'movie' ? ['/movie', item.id] : ['/show', item.id]"
+          [routerLink]="
+            item.media_type === 'movie'
+              ? ['/movie', item.id]
+              : ['/show', item.id]
+          "
           class="flex items-center gap-4 p-3 hover:bg-purple-100 cursor-pointer transition-all duration-150"
           (click)="dropDown = false"
         >
@@ -94,11 +98,7 @@
       <div class="mb-6">
         <p class="text-lg font-bold text-purple-700 mb-2">🎭 Popular Celebs</p>
         <mat-nav-list class="space-y-1">
-          <a
-            mat-list-item
-            class="list-items"
-            [routerLink]="['/celebs']"
-          >
+          <a mat-list-item class="list-items" [routerLink]="['/celebs']">
             <mat-label class="flex items-center gap-1"
               ><mat-icon [ngStyle]="{ color: 'red' }">numbers</mat-icon> Explore
               Celebs</mat-label

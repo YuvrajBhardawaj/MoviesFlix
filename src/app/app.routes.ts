@@ -5,17 +5,27 @@ import { MovieDetailsComponent } from './components/movie-details/movie-details.
 import { movieDetailsResolver } from './resolvers/movie-details.resolver';
 import { showDetailsResolver } from './resolvers/show-details.resolver';
 import { ShowDetailsComponent } from './components/show-details/show-details.component';
-import { SearchResultsComponent } from './pages/search-results/search-results.component';
 import { TrendingResolver } from './resolvers/trending.resolver';
 import { TrendingMoviesComponent } from './pages/trending/trending-movies/trending-movies.component';
 import { TrendingShowsComponent } from './pages/trending/trending-shows/trending-shows.component';
 import { CelebsComponent } from './pages/celebs/celebs.component';
 import { celebsResolver } from './resolvers/celebs.resolver';
+import { TopMoviesComponent } from './pages/moviesflix_choice/top-movies/top-movies.component';
+import { TopShowsComponent } from './pages/moviesflix_choice/top-shows/top-shows.component';
 
 export const routes: Routes = [
   {
-    path: 'search',
-    component: SearchResultsComponent
+    path: 'must-watch',
+    children: [
+      {
+        path: 'movies',
+        component: TopMoviesComponent
+      },
+      {
+        path: 'shows',
+        component: TopShowsComponent
+      }
+    ]
   },
   {
     path: 'movie/:id',
