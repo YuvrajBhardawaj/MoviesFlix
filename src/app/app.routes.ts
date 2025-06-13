@@ -12,6 +12,7 @@ import { CelebsComponent } from './pages/celebs/celebs.component';
 import { celebsResolver } from './resolvers/celebs.resolver';
 import { TopMoviesComponent } from './pages/moviesflix_choice/top-movies/top-movies.component';
 import { TopShowsComponent } from './pages/moviesflix_choice/top-shows/top-shows.component';
+import { TopMoviesResolver } from './resolvers/top-movies.resolver';
 
 export const routes: Routes = [
   {
@@ -19,7 +20,10 @@ export const routes: Routes = [
     children: [
       {
         path: 'movies',
-        component: TopMoviesComponent
+        component: TopMoviesComponent,
+        resolve: {
+          topMovies: TopMoviesResolver
+        }
       },
       {
         path: 'shows',
