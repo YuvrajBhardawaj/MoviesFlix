@@ -13,6 +13,7 @@ import { celebsResolver } from './resolvers/celebs.resolver';
 import { TopMoviesComponent } from './pages/moviesflix_choice/top-movies/top-movies.component';
 import { TopShowsComponent } from './pages/moviesflix_choice/top-shows/top-shows.component';
 import { TopMoviesResolver } from './resolvers/top-movies.resolver';
+import { TopShowsResolver } from './resolvers/top-shows.resolver';
 
 export const routes: Routes = [
   {
@@ -27,7 +28,10 @@ export const routes: Routes = [
       },
       {
         path: 'shows',
-        component: TopShowsComponent
+        component: TopShowsComponent,
+        resolve: {
+          topShows: TopShowsResolver
+        }
       }
     ]
   },

@@ -9,12 +9,12 @@ import { TopRatedMoviesResponse } from '../models/topSuggested';
   providedIn: 'root'
 })
 export class TopMoviesResolver implements Resolve<TopRatedMoviesResponse> {
-  constructor(private topMoviesService: MustWatchService) {}
+  constructor(private mustWatchService: MustWatchService) {}
 
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<any> {
-    return this.topMoviesService.getTopRatedMovies();
+  ): Observable<TopRatedMoviesResponse> {
+    return this.mustWatchService.getTopRatedMovies();
   }
 }

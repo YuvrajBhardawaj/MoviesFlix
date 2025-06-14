@@ -1,1 +1,25 @@
-<p>top-shows works!</p>
+<div class="flex flex-col gap-4">
+  <h1 class="text-4xl">Must Watch Shows</h1>
+  <div class="flex flex-wrap justify-evenly items-center gap-4">
+    @for (show of topRatedShows.results; track show.id) {
+    <app-cards
+      [data]="show"
+      [type]="'show'"
+      [title]="show.name"
+      class="hover:transition-all duration-200 hover:scale-105 rounded-xl"
+    />
+    }
+  </div>
+  <div class="flex justify-end gap-4">
+    <button mat-button (click)="previousPage()" [disabled]="currentPage === 1">
+      Prev
+    </button>
+    <button
+      mat-flat-button
+      (click)="nextPage()"
+      [disabled]="currentPage === topRatedShows.total_pages"
+    >
+      Next
+    </button>
+  </div>
+</div>

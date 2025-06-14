@@ -5,7 +5,7 @@
     <app-cards
       [data]="show"
       [type]="'show'"
-      [title]="show.original_name"
+      [title]="show.name"
       class="hover:transition-all duration-200 hover:scale-105 rounded-xl"
     />
     }
@@ -16,7 +16,7 @@
     </button>
     <button
       mat-flat-button
-      (click)="nextPage()"
+      (click)="nextPage()"  
       [disabled]="currentPage === trendingShows.total_pages"
     >
       Next

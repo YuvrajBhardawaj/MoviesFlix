@@ -9,8 +9,6 @@ import { environment } from '../../environments/environment.development';
 export class TrendingService {
   constructor(private http: HttpClient) {}
   
-  private apiKey = "2f38bf0380418876c7d496e410ddf0a7";
-
   private trendingMoviesSubject = new BehaviorSubject<TrendingMoviesPageination>({
     page: 1,              // Set a default page number
     results: [],          // Start with an empty array for results
