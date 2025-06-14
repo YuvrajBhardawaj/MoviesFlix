@@ -2,60 +2,78 @@
   <!-- Cast Section -->
   <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
     <h3 class="text-2xl font-semibold mb-4">Cast</h3>
-    @if (credits.cast.length>0) {
-      <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-between items-center">
+    @if (credits.cast.length > 0) {
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+    >
       @for (cast of sortedCast; track $index) {
-        <div class="flex flex-col items-center w-auto">
-          @if (cast.profile_path) {
-            <img
-              [src]="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
-              alt="{{ cast.name }}"
-              class="w-40 h-40 object-cover rounded-full border border-gray-300 shadow"
-            />
-          } @else {
-            <div
-              class="w-40 h-40 flex items-center justify-center rounded-full border border-gray-300 shadow bg-gray-200"
-            >
-              <mat-icon class="text-6xl text-gray-500">person</mat-icon>
-            </div>
-          }
-
-          <p class="text-sm text-center mt-2 font-medium">{{ cast.name }}</p>
-          <p class="text-xs text-center text-gray-400">{{ cast.character }}</p>
+      <div class="flex flex-col items-center w-full">
+        @if (cast.profile_path) {
+        <img
+          [src]="'https://image.tmdb.org/t/p/w185' + cast.profile_path"
+          alt="{{ cast.name }}"
+          class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 object-cover rounded-full border border-gray-300 shadow"
+        />
+        } @else {
+        <div
+          class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center rounded-full border border-gray-300 shadow bg-gray-200"
+        >
+          <mat-icon class="text-4xl sm:text-5xl md:text-6xl text-gray-500"
+            >person</mat-icon
+          >
         </div>
+        }
+
+        <p class="text-xs sm:text-sm text-center mt-2 font-medium">
+          {{ cast.name }}
+        </p>
+        <p class="text-[10px] sm:text-xs text-center text-gray-400">
+          {{ cast.character }}
+        </p>
+      </div>
       }
     </div>
+    } @else {
+    <div class="text-center text-xl">😶‍🌫️Unable To Fetch Cast Details</div>
     }
-    @else {
-      <div class="text-center text-xl">😶‍🌫️Unable To Fetch Cast Details</div>
-    }
-    
   </div>
 
   <!-- Crew Section -->
   <div class="shadow-lg p-6 border border-neutral-300 rounded-xl">
-    <h3 class="text-2xl font-semibold mb-4">Crew</h3>
-    <div class="grid grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4 justify-between items-center">
+    <h3 class="text-2xl font-semibold mb-4">Cast</h3>
+    @if (credits.crew.length > 0) {
+    <div
+      class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+    >
       @for (crew of sortedCrew; track $index) {
-        <div class="flex flex-col items-center w-auto">
-          @if (crew.profile_path) {
-            <img
-              [src]="'https://image.tmdb.org/t/p/w185' + crew.profile_path"
-              alt="{{ crew.name }}"
-              class="w-40 h-40 object-cover rounded-full border border-gray-300 shadow"
-            />
-          } @else {
-            <div
-              class="w-40 h-40 flex items-center justify-center rounded-full border border-gray-300 shadow bg-gray-200"
-            >
-              <mat-icon class="text-6xl text-gray-500">person</mat-icon>
-            </div>
-          }
-
-          <p class="text-sm text-center mt-2 font-medium">{{ crew.name }}</p>
-          <p class="text-xs text-center text-gray-400">{{ crew.job }}</p>
+      <div class="flex flex-col items-center w-full">
+        @if (crew.profile_path) {
+        <img
+          [src]="'https://image.tmdb.org/t/p/w185' + crew.profile_path"
+          alt="{{ crew.name }}"
+          class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 object-cover rounded-full border border-gray-300 shadow"
+        />
+        } @else {
+        <div
+          class="w-24 h-24 sm:w-28 sm:h-28 md:w-32 md:h-32 lg:w-40 lg:h-40 flex items-center justify-center rounded-full border border-gray-300 shadow bg-gray-200"
+        >
+          <mat-icon class="text-4xl sm:text-5xl md:text-6xl text-gray-500"
+            >person</mat-icon
+          >
         </div>
+        }
+
+        <p class="text-xs sm:text-sm text-center mt-2 font-medium">
+          {{ crew.name }}
+        </p>
+        <p class="text-[10px] sm:text-xs text-center text-gray-400">
+          {{ crew.job }}
+        </p>
+      </div>
       }
     </div>
+    } @else {
+    <div class="text-center text-xl">😶‍🌫️Unable To Fetch crew Details</div>
+    }
   </div>
 </div>
