@@ -1,0 +1,122 @@
+<div class="flex flex-col gap-8">
+  @if (details) {
+  <!-- Backdrop Section -->
+  <div
+    class="w-full min-h-[30rem] relative bg-cover bg-center rounded-xl overflow-hidden"
+    [style.background-image]="
+      'url(https://image.tmdb.org/t/p/w500' + details.backdrop_path + ')'
+    "
+  >
+    <!-- Dark Overlay -->
+    <div class="absolute inset-0 bg-black bg-opacity-70 rounded-xl z-0"></div>
+
+    <!-- Foreground Content -->
+    <div
+      class="relative z-10 flex flex-col md:flex-row justify-between items-center text-white px-4 md:px-16 py-6 md:py-10 gap-6 md:gap-10"
+    >
+      <!-- Poster -->
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + details.poster_path"
+        class="w-32 md:w-56 rounded-md shadow-md"
+        [alt]="details.name + ' poster'"
+      />
+
+      <!-- Details -->
+      <div class="flex-1 flex flex-col gap-4 text-center md:text-left">
+        <h1 class="text-2xl md:text-4xl font-semibold">
+          {{ details.name }} ({{ details.first_air_date | date : "yyyy" }})
+        </h1>
+
+        <!-- Rating -->
+        <div class="flex justify-center md:justify-start gap-2 items-center">
+          <mat-progress-spinner
+            mode="determinate"
+            strokeWidth="5"
+            [diameter]="30"
+            [value]="details.vote_average * 10"
+          ></mat-progress-spinner>
+          <h4 class="text-base md:text-lg font-semibold">
+            {{ Math.round(details.vote_average * 10) }}% Audience Score
+          </h4>
+        </div>
+
+        <!-- Overview -->
+        <div>
+          <h3 class="text-lg md:text-2xl font-semibold mb-1">Overview</h3>
+          <p class="text-sm md:text-base leading-relaxed break-words">
+            {{ details.overview }}
+          </p>
+        </div>
+
+        <!-- Genres -->
+        <div class="flex flex-wrap justify-center md:justify-start gap-2">
+          @for (genre of details.genres; track $index) {
+          <span class="bg-gray-700 px-2 py-1 rounded text-sm">{{
+            genre.name
+          }}</span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Seasons Section -->
+  @for (season of details.seasons.slice(0, 2); track $index) {
+  <div
+    class="shadow-lg p-4 md:p-6 border border-neutral-300 rounded-xl flex flex-col gap-4 bg-white"
+  >
+    <div class="flex flex-col md:flex-row gap-4 md:gap-6 items-start">
+      <img
+        [src]="'https://image.tmdb.org/t/p/w500' + season.poster_path"
+        class="w-24 md:w-32 rounded-xl shadow"
+        [alt]="details.name + ' Season ' + season.season_number + ' poster'"
+      />
+
+      <div class="flex flex-col gap-3 w-full">
+        <div class="flex flex-col md:flex-row justify-between w-full">
+          <div>
+            <h4 class="text-lg md:text-xl font-semibold">
+              Season {{ season.season_number }}
+            </h4>
+            <p class="text-sm text-gray-600">
+              Episodes: {{ season.episode_count }}
+            </p>
+          </div>
+
+          <div class="text-sm text-gray-700 mt-2 md:mt-0">
+            <p>
+              <span class="font-medium">Aired on:</span>
+              {{ season.air_date | date }}
+            </p>
+            <div class="flex items-center gap-1 mt-1">
+              <span class="font-medium">Rating:</span>
+              <span>{{ season.vote_average }}</span>
+              <mat-icon class="text-base">star</mat-icon>
+            </div>
+          </div>
+        </div>
+        @if (season.overview) {
+        <div>
+          <h4 class="text-base md:text-lg font-semibold">Overview</h4>
+          <p class="text-sm text-gray-700 leading-relaxed break-words">
+            {{ season.overview }}
+          </p>
+        </div>
+        }
+      </div>
+    </div>
+  </div>
+  } @if (details.seasons.length > 2) {
+  <a
+    [routerLink]="['seasons']"
+    class="flex items-center justify-center gap-2 text-blue-600 hover:underline text-sm md:text-base font-medium"
+  >
+    <mat-icon>arrow_forward_ios</mat-icon>
+    View All Seasons
+  </a>
+
+  } } @if (showCredits) {
+  <app-cast-crew [credits]="showCredits" />
+  }
+</div>
+<router-outlet></router-outlet>

@@ -76,7 +76,7 @@ export class SidenavComponent implements OnDestroy, OnInit {
 
   // Search form
   searchField = new FormControl<string>('', { nonNullable: true });
-
+  
   submit(): void {
     const query = this.searchField.getRawValue().trim();
     if (!query) return;

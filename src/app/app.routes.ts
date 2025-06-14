@@ -15,6 +15,9 @@ import { TopShowsComponent } from './pages/moviesflix_choice/top-shows/top-shows
 import { TopMoviesResolver } from './resolvers/top-movies.resolver';
 import { TopShowsResolver } from './resolvers/top-shows.resolver';
 
+import { DetailsComponent } from './components/show-details/details/details.component';
+import { SeasonsComponent } from './components/show-details/seasons/seasons.component';
+
 export const routes: Routes = [
   {
     path: 'must-watch',
@@ -45,6 +48,16 @@ export const routes: Routes = [
   {
     path: 'show/:id',
     component: ShowDetailsComponent,
+    children: [
+      {
+        path: '',
+        component: DetailsComponent
+      },
+      {
+        path: 'seasons',
+        component: SeasonsComponent,
+      }
+    ],
     resolve: {
       details: showDetailsResolver,
     },

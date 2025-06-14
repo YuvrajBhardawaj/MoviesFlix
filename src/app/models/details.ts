@@ -57,6 +57,7 @@ export interface Cast {
   name: string;
   character: string;
   profile_path: string | null;
+  popularity: number;
 }
 
 export interface Crew {
@@ -65,6 +66,7 @@ export interface Crew {
   job: string;
   department: string;
   profile_path: string | null;
+  popularity: number;
 }
 
 // --- TV Show Interfaces (added based on your JSON) ---

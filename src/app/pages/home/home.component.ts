@@ -17,6 +17,34 @@ export class HomeComponent implements OnInit {
   trendingMovies: TrendingMovies[] = [];
   trendingShows: TrendingShows[] = [];
 
+  currentMovieIndex = 0;
+currentShowIndex = 0;
+
+nextMovie() {
+  if (this.currentMovieIndex < this.trendingMovies.length - 1) {
+    this.currentMovieIndex++;
+  }
+}
+
+prevMovie() {
+  if (this.currentMovieIndex > 0) {
+    this.currentMovieIndex--;
+  }
+}
+
+nextShow() {
+  if (this.currentShowIndex < this.trendingShows.length - 1) {
+    this.currentShowIndex++;
+  }
+}
+
+prevShow() {
+  if (this.currentShowIndex > 0) {
+    this.currentShowIndex--;
+  }
+}
+
+
   ngOnInit(): void { //effect 
     this.trendingService.trendingMovies$.subscribe({
       next:(data: TrendingMoviesPageination)=>this.trendingMovies = data.results
