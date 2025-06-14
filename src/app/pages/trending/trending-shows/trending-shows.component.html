@@ -1,12 +1,12 @@
 <div class="flex flex-col gap-4">
-  <h1 class="text-4xl">Trends Shows 📺</h1>
+  <h1 class="text-4xl">Trending Shows 📺</h1>
   <div class="flex flex-wrap justify-evenly items-center gap-4">
     @for (show of trendingShows.results; track show.id) {
     <app-cards
       [data]="show"
       [type]="'show'"
       [title]="show.name"
-      class="hover:transition-all duration-200 hover:scale-105 rounded-xl"
+      class="lg:hover:transition-all lg:duration-200 lg:hover:scale-105 rounded-xl"
     />
     }
   </div>
